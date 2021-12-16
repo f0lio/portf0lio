@@ -14,7 +14,9 @@ export default function Home() {
 
 			<MaxWidthWrapper>
 				<div className="px-2">
-					<p className="text-5xl py-3 font-bold  text-red-50">Hi, I'm John</p>
+					<p className="text-5xl py-3 font-bold  text-gray-100">
+						Hi, I&#39;m John
+					</p>
 					<div className="text-base py-3 text-gray-300 font-normal">
 						{/* <SubTitle>Velit nulla nostrud qui commodo commodo Lorem.</SubTitle> */}
 						<br />
