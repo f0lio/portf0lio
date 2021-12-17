@@ -5,7 +5,7 @@ import Layout from "@components/Layout";
 
 const Etc = () => {
 	return (
-		<Layout pageName={"etc"}>
+		<Layout pageName={"etc"} pageTitle="F0lio - Etc">
 			<MaxWidthWrapper>
 				<Title>Etc</Title>
 				<Description>

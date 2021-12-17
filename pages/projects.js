@@ -3,7 +3,7 @@ import Layout from "@components/Layout";
 
 const Projects = () => {
 	return (
-		<Layout pageName={"projects"}>
+		<Layout pageName={"projects"} pageTitle="F0lio - Projects">
 			<Title>Projects</Title>
 			<Description>
 				Quis nulla sit excepteur laboris consectetur cupidatat sint fugiat

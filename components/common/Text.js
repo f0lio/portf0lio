@@ -1,16 +1,16 @@
 import React from "react";
 
 export const Title = ({ children }) => (
-	<p className="text-4xl font-bold py-3 text-gray-50">{children}</p>
+	<p className="py-3 text-4xl font-bold text-gray-50">{children}</p>
 );
 export const SubTitle = ({ children }) => (
-	<p className="text-2xl  py-2 break-words text-gray-200 font-bold">
+	<p className="py-2 text-2xl font-bold text-gray-200 break-words">
 		{children}
 	</p>
 );
 
 export const Description = ({ children }) => (
-	<p className="text-base py-2 break-words text-gray-300 font-light">
+	<p className="py-2 text-base font-light text-gray-300 break-words">
 		{children}
 	</p>
 );

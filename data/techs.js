@@ -34,10 +34,7 @@ const techs = [
 		name: "Gatsby",
 		icon: SiGatsby,
 	},
-	{
-		name: "styled-components",
-		icon: SiStyledcomponents,
-	},
+
 	{
 		name: "TailwindCSS",
 		icon: SiTailwindcss,
@@ -72,6 +69,10 @@ const techs = [
 	// 	name: "C++",
 	// 	// icon: CppLogo,
 	// },
+	{
+		name: "styled-components",
+		icon: SiStyledcomponents,
+	},
 ];
 
 export default techs;

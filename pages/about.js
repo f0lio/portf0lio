@@ -6,20 +6,20 @@ import techs from "../data/techs";
 
 const About = () => {
 	return (
-		<Layout pageName={"about"}>
+		<Layout pageName={"about"} pageTitle="F0lio - About">
 			<div>
 				<Title>About</Title>
-				<Description>
-					Consectetur reprehenderit elit tempor labore tempor minim nulla
-					officia non quis. Duis anim cupidatat quis elit magna id dolore
-					reprehenderit id aliquip consectetur amet dolor. Et commodo fugiat
-					elit aute. Eu cupidatat id irure anim.
-				</Description>
-
+				<div className="py-2">
+					<Description>
+						Consectetur reprehenderit elit tempor labore tempor minim nulla
+						officia non quis. Duis anim cupidatat quis elit magna id dolore
+						reprehenderit id aliquip consectetur amet dolor. Et commodo fugiat
+						elit aute. Eu cupidatat id irure anim.
+					</Description>
+				</div>
 				<div className="">
 					<SubTitle>Technologies</SubTitle>
-
-					<ul className="grid grid-cols-4 py-2">
+					<ul className="grid flex-wrap grid-cols-2 gap-4 py-4 sm:grid-cols-3 md:grid-cols-4">
 						{/* <IconContext.Provider value={{ color: "blue", className: "" }}> */}
 						{techs.map((t, key) => (
 							<TechBox tech={t} key={key} />
