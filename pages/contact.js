@@ -43,7 +43,7 @@ const Contact = () => {
 								autoComplete="false"
 								tabIndex="0"
 								type="text"
-								className="block z-0 w-full h-full px-3 py-3 mt-2 text-gray-300 border rounded-lg outline-none w-100 dark:bg-gray-900 dark:border-gray-800 focus:border-gray-600 focus:outline-none"
+								className="block z-0 w-full h-full px-3 py-3 mt-2 bg-transparent  text-gray-300 border rounded-lg outline-none w-100 dark:bg-gray-900 dark:border-gray-800 focus:border-gray-600 border-gray-700 focus:outline-none"
 							/>
 						</p>
 					</div>
@@ -63,7 +63,7 @@ const Contact = () => {
 								autoComplete="false"
 								tabIndex="0"
 								type="text"
-								className="block  w-full h-full px-3 py-3 mt-2 text-gray-300 bg-white border rounded-lg outline-none w-100 dark:bg-gray-900 dark:border-gray-800 focus:border-gray-600 focus:outline-none"
+								className="block z-0 w-full h-full px-3 py-3 mt-2 bg-transparent  text-gray-300 border rounded-lg outline-none w-100 dark:bg-gray-900 dark:border-gray-800 focus:border-gray-600 border-gray-700 focus:outline-none"
 							/>
 						</p>
 					</div>
@@ -81,8 +81,8 @@ const Contact = () => {
 							name="message"
 							id="message"
 							cols="10"
-							rows="3"
-							className="w-full p-2 px-3 py-3 mt-2 text-gray-300 bg-white border rounded-lg w-100 dark:bg-gray-900 dark:border-gray-800 focus:border-gray-600 focus:outline-none"
+							rows="5"
+							className="block z-0 w-full h-full px-3 py-3 mt-2 bg-transparent  text-gray-300 border rounded-lg outline-none w-100 dark:bg-gray-900 dark:border-gray-800 focus:border-gray-600 border-gray-700 focus:outline-none"
 						></textarea>
 					</div>
 
