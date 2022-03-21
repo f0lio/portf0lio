@@ -3,11 +3,11 @@ import { motion } from 'framer-motion';
 
 interface TechBoxesProps {
 	name: string;
-	icon: React.ReactNode;
+	icon: any;
 }
 
-export const TechBox: React.FC<TechBoxesProps> = ({ tech }) => {
-	const Icon = tech.icon;
+export const TechBox: React.FC<TechBoxesProps> = ({ name, icon }) => {
+	const Icon = icon;
 	return (
 		<motion.li
 			drag={true}
@@ -19,9 +19,9 @@ export const TechBox: React.FC<TechBoxesProps> = ({ tech }) => {
 			className="flex max-w-max items-center gap-x-3 p-3 text-gray-300 hover:text-primary-3"
 		>
 			<div className="cursor-pointer ">
-				{tech.icon && <Icon className="h-7 w-7" />}
+				{icon && <Icon className="h-7 w-7" />}
 			</div>
-			<p className="min-w-max cursor-pointer text-sm">{tech.name}</p>
+			<p className="min-w-max cursor-pointer text-sm">{name}</p>
 		</motion.li>
 	);
 };

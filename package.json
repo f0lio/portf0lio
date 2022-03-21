@@ -7,6 +7,7 @@
     "start": "next start",
     "format": "prettier --write '**/*.{tsx,md,mdx}'",
     "lint": "next lint",
+    "type-check": "tsc --pretty --noEmit",
     "test": "echo \"Oh yeah, tests!\" && exit 0"
   },
   "dependencies": {
@@ -15,8 +16,7 @@
     "next": "12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-icons": "^4.3.1",
-    "three": "^0.136.0"
+    "react-icons": "^4.3.1"
   },
   "devDependencies": {
     "@types/react": "^17.0.39",
@@ -43,3 +43,4 @@
     }
   }
 }
+

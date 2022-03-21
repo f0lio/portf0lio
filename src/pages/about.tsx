@@ -4,6 +4,8 @@ import { TechBox } from '@components/common/Boxes';
 import { Description, Title, SubTitle } from '@components/common/Text';
 import { techs } from '@data/index';
 
+import Dock from '@components/Dock';
+
 const About = () => {
 	return (
 		<Layout pageName={'about'} pageTitle="F0lio - About">
@@ -21,8 +23,8 @@ const About = () => {
 					<SubTitle>Technologies</SubTitle>
 					<ul className="grid grid-cols-2 flex-wrap gap-4 py-4 sm:grid-cols-3 md:grid-cols-4">
 						{/* <IconContext.Provider value={{ color: "blue", className: "" }}> */}
-						{techs.map((t, key) => (
-							<TechBox tech={t} key={key} />
+						{techs.map((item, key) => (
+							<TechBox {...item} key={key} />
 						))}
 						{/* </IconContext.Provider> */}
 					</ul>

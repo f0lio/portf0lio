@@ -8,12 +8,33 @@ import { useWindowWidth } from '@hooks/index';
 import { HiMenu as OpenIcon } from 'react-icons/hi';
 import { IoCloseSharp as CloseIcon } from 'react-icons/io5';
 
-const ToggleButton = (props) => (
+import cn from 'classnames';
+
+interface NavbarProps {
+	isOpen: boolean;
+	onClick: () => void;
+	pageName: string;
+}
+
+interface NavItemProps {
+	href: string;
+	isActive: boolean | undefined;
+	className?: string | undefined;
+	scroll?: boolean | undefined;
+}
+
+const ToggleButton = ({
+	isOpen,
+	onClick,
+}: {
+	isOpen?: boolean | undefined;
+	onClick: () => void;
+}) => (
 	<button
 		className="h-11 py-2 text-white outline-none hover:text-primary-3"
-		onClick={() => props.onClick()}
+		onClick={() => onClick()}
 	>
-		{props.isOpen ? (
+		{isOpen ? (
 			<CloseIcon className="h-full w-full" />
 		) : (
 			<OpenIcon className="h-full w-full" />
@@ -21,7 +42,12 @@ const ToggleButton = (props) => (
 	</button>
 );
 
-const SmallNavItem = ({ children, href, isActive, className = '' }) => {
+const SmallNavItem: React.FC<NavItemProps> = ({
+	children,
+	href,
+	isActive,
+	className,
+}) => {
 	return (
 		<li>
 			<Link href={href}>
@@ -32,9 +58,14 @@ const SmallNavItem = ({ children, href, isActive, className = '' }) => {
 					dragPropagation
 					dragTransition={{ bounceStiffness: 300, bounceDamping: 15 }}
 					whileTap={{ scale: 0.9 }}
-					className={`${className} ${
-						isActive ? ' text-primary-3' : 'text-gray-300'
-					} rounded-2lx font-primary max-h-min cursor-pointer py-3 px-4 font-mono text-sm duration-150 hover:text-primary-3`}
+					className={cn(
+						'rounded-2lx font-primary max-h-min cursor-pointer py-3 px-4 font-mono text-sm duration-150 hover:text-primary-3'.split(
+							' '
+						),
+
+						className,
+						isActive ? 'text-primary-3' : 'text-gray-300'
+					)}
 				>
 					{children}
 				</motion.div>
@@ -43,7 +74,7 @@ const SmallNavItem = ({ children, href, isActive, className = '' }) => {
 	);
 };
 
-const SmallNavbar = (props) => {
+const SmallNavbar: React.FC<NavbarProps> = ({ isOpen, onClick, pageName }) => {
 	return (
 		<div className="relative z-40">
 			<div className="flex justify-between px-4 pt-8">
@@ -53,29 +84,29 @@ const SmallNavbar = (props) => {
 				>
 					~ F0lio
 				</Link>
-				<ToggleButton isOpen={props.isOpen} onClick={() => props.onClick()} />
+				<ToggleButton isOpen={isOpen} onClick={() => onClick()} />
 			</div>
-			{props.isOpen && (
+			{isOpen && (
 				<nav className="fixed h-full w-full ">
 					<ul className="flex h-full flex-col items-center justify-items-center bg-opacity-0 py-32 shadow-sm backdrop-blur-md backdrop-filter">
-						<SmallNavItem isActive={props.pageName == 'about'} href="/about">
+						<SmallNavItem isActive={pageName == 'about'} href="/about">
 							/about
 						</SmallNavItem>
 						<SmallNavItem
-							isActive={props.pageName == 'projects'}
+							isActive={pageName == 'projects'}
 							href="/projects"
 							scroll
 						>
 							/projects
 						</SmallNavItem>
 
-						<SmallNavItem isActive={props.pageName == 'etc'} href="/etc">
+						<SmallNavItem isActive={pageName == 'etc'} href="/etc">
 							/etc
 						</SmallNavItem>
 						<div className="h-3 w-24 border-b border-gray-200"></div>
 						<SmallNavItem
 							className="py-5"
-							isActive={props.pageName == 'contact'}
+							isActive={pageName == 'contact'}
 							href="/contact"
 						>
 							/contact
@@ -87,10 +118,20 @@ const SmallNavbar = (props) => {
 	);
 };
 
-const NavItem = ({ children, href, isActive, className = '' }) => {
+const NavItem: React.FC<NavItemProps> = ({
+	children,
+	href,
+	isActive,
+	className = '',
+}: {
+	children: React.ReactNode;
+	href: string;
+	isActive: boolean;
+	className: string;
+}) => {
 	return (
 		<li>
-			<Link href={href}>
+			<Link href={href} passHref>
 				<motion.div
 					drag={true}
 					dragSnapToOrigin

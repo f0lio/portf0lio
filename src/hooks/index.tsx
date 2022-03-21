@@ -5,7 +5,7 @@ export const useWindowWidth = () => {
 	const [width, setWidth] = useState(isBrowser ? window.innerWidth : 0);
 
 	useEffect(() => {
-		if (!isBrowser) return false;
+		if (!isBrowser) return;
 
 		const handleResize = () => setWidth(window.innerWidth);
 		window.addEventListener('resize', handleResize);

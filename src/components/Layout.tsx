@@ -1,8 +1,9 @@
 import React from 'react';
 import Navbar from './Navbar';
+
 import { MaxWidthWrapper } from '@components/common/Containers';
-import { motion } from 'framer-motion';
 import Head from 'next/head';
+import { motion } from 'framer-motion';
 
 const variants = {
 	hidden: { opacity: 0 },

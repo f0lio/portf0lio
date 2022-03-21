@@ -1,7 +1,45 @@
 {
-  "extends": "next/core-web-vitals",
+  "plugins": [
+    "unused-imports",
+    "prettier"
+  ],
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:prettier/recommended",
+    "plugin:tailwind/recommended"
+  ],
   "rules": {
-    "no-console": 2,
-    "no-unused-vars": 2
+    "no-console": [
+      2,
+      {
+        "allow": ["warn", "error"]
+      }
+    ],
+    "no-unused-vars": 2,
+    "@typescript-eslint/no-unused-vars": [
+      0,
+      {
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ]
   }
 }

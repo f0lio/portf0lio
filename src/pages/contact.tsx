@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { Description, SubTitle, Title } from '@components/common/Text';
+import { Description, Title } from '@components/common/Text';
 import Layout from '@components/Layout';
+import { useState } from 'react';
 
 const Contact = () => {
 	const [contactInfo, setContactInfo] = useState({});
@@ -41,7 +41,7 @@ const Contact = () => {
 								name="name"
 								id="name"
 								autoComplete="false"
-								tabIndex="0"
+								tabIndex={0}
 								type="text"
 								className="w-100 z-0 mt-2 block h-full w-full rounded-lg border  border-gray-700 bg-transparent px-3 py-3 text-gray-300 outline-none focus:border-gray-600 focus:outline-none dark:border-gray-800 dark:bg-gray-900"
 							/>
@@ -61,7 +61,7 @@ const Contact = () => {
 								name="email"
 								id="email"
 								autoComplete="false"
-								tabIndex="0"
+								tabIndex={0}
 								type="text"
 								className="w-100 z-0 mt-2 block h-full w-full rounded-lg border  border-gray-700 bg-transparent px-3 py-3 text-gray-300 outline-none focus:border-gray-600 focus:outline-none dark:border-gray-800 dark:bg-gray-900"
 							/>
@@ -80,8 +80,8 @@ const Contact = () => {
 							onChange={(e) => handleChange(e)}
 							name="message"
 							id="message"
-							cols="10"
-							rows="5"
+							cols={10}
+							rows={5}
 							className="w-100 z-0 mt-2 block h-full w-full rounded-lg border  border-gray-700 bg-transparent px-3 py-3 text-gray-300 outline-none focus:border-gray-600 focus:outline-none dark:border-gray-800 dark:bg-gray-900"
 						></textarea>
 					</div>
