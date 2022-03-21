@@ -1,8 +1,8 @@
-import React from "react";
-import Navbar from "./Navbar";
-import { MaxWidthWrapper } from "@common/Containers";
-import { motion } from "framer-motion";
-import Head from "next/head";
+import React from 'react';
+import Navbar from './Navbar';
+import { MaxWidthWrapper } from '@components/common/Containers';
+import { motion } from 'framer-motion';
+import Head from 'next/head';
 
 const variants = {
 	hidden: { opacity: 0 },
@@ -15,21 +15,21 @@ const Layout = (props) => {
 		<>
 			<Head>
 				<title>{props.pageTitle}</title>
-				<meta name="description" content={props.description || "portfolio"} />
+				<meta name="description" content={props.description || 'portfolio'} />
 				<meta
 					name="keywords"
-					content={props.keywords || "portfolio, developer, resume"}
+					content={props.keywords || 'portfolio, developer, resume'}
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<div className="flex-col relative justify-center w-full h-screen bg-primary">
+			<div className="relative h-screen w-full flex-col justify-center bg-primary">
 				<Navbar pageName={props.pageName} />
 				<motion.main
 					variants={variants}
 					initial="hidden"
 					animate="enter"
 					exit="exit"
-					className="flex flex-col items-center justify-center w-full px-8 pt-16"
+					className="flex w-full flex-col items-center justify-center px-8 pt-16"
 				>
 					<MaxWidthWrapper>{props.children}</MaxWidthWrapper>
 				</motion.main>

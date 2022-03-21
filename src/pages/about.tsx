@@ -1,12 +1,12 @@
-import Layout from "@components/Layout";
+import Layout from '@components/Layout';
 
-import { TechBox } from "@components/common/Boxes";
-import { Description, Title, SubTitle } from "@components/common/Text";
-import techs from "../data/techs";
+import { TechBox } from '@components/common/Boxes';
+import { Description, Title, SubTitle } from '@components/common/Text';
+import { techs } from '@data/index';
 
 const About = () => {
 	return (
-		<Layout pageName={"about"} pageTitle="F0lio - About">
+		<Layout pageName={'about'} pageTitle="F0lio - About">
 			<div>
 				<Title>About</Title>
 				<div className="py-2">
@@ -19,7 +19,7 @@ const About = () => {
 				</div>
 				<div className="">
 					<SubTitle>Technologies</SubTitle>
-					<ul className="grid flex-wrap grid-cols-2 gap-4 py-4 sm:grid-cols-3 md:grid-cols-4">
+					<ul className="grid grid-cols-2 flex-wrap gap-4 py-4 sm:grid-cols-3 md:grid-cols-4">
 						{/* <IconContext.Provider value={{ color: "blue", className: "" }}> */}
 						{techs.map((t, key) => (
 							<TechBox tech={t} key={key} />

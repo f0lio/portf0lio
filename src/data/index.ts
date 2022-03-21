@@ -21,7 +21,7 @@ import {
 	SiJavascript,
 } from "react-icons/si";
 
-const techs = [
+export const techs = [
 	{
 		name: "React",
 		icon: SiReact,
@@ -75,4 +75,36 @@ const techs = [
 	},
 ];
 
-export default techs;
+export const projects = [
+	{
+		name: "HiLight",
+		description:
+			"VSCode extension that highlights parts of code to avoid searching for it.",
+		link: "https://marketplace.visualstudio.com/items?itemName=f0lio.hilight",
+		github: "https://github.com/f0lio/HiLight",
+		image: "",
+	},
+	{
+		name: "Minishell",
+		description:
+			"A bash-like shell that runs on the terminal. It has a built-in history and a built-in command-line interface.",
+		link: "",
+		github: "https://github.com/f0lio/minishell",
+		image: "",
+	},
+	{
+		name: "NextJS Shopify Store",
+		description:
+			"Minimal E-Commerce Store built with NextJS using Shopify Storefront API.",
+		link: "",
+		github: "https://github.com/f0lio/nextjs-shopify-store",
+		image: "",
+	},
+	{
+		name: "FDF - 3D Wireframe Viewer",
+		description: "3D wireframe viewer written in C language",
+		link: "",
+		github: "https://github.com/f0lio/FdF",
+		image: "",
+	},
+];

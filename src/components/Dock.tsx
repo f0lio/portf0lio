@@ -1,11 +1,11 @@
-import React from "react";
-import Link from "@common/Link";
+import React from 'react';
+import Link from '@components/common/Link';
 // import Draggable from "react-draggable";
 
 const DockItem = ({ children, href }) => {
 	return (
 		<div>
-			<button className="px-3 py-2 border-2 rounded-md shadow-sm hover:shadow-md">
+			<button className="rounded-md border-2 px-3 py-2 shadow-sm hover:shadow-md">
 				<Link href={href}>{children}</Link>
 			</button>
 		</div>

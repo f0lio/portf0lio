@@ -1,9 +1,9 @@
-import { Description, Title } from "@components/common/Text";
-import Layout from "@components/Layout";
+import { Description, Title } from '@components/common/Text';
+import Layout from '@components/Layout';
 
 const Projects = () => {
 	return (
-		<Layout pageName={"projects"} pageTitle="F0lio - Projects">
+		<Layout pageName={'projects'} pageTitle="F0lio - Projects">
 			<Title>Projects</Title>
 			<Description>
 				Quis nulla sit excepteur laboris consectetur cupidatat sint fugiat

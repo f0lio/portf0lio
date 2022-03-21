@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Description, SubTitle, Title } from "@components/common/Text";
-import Layout from "@components/Layout";
+import { useState } from 'react';
+import { Description, SubTitle, Title } from '@components/common/Text';
+import Layout from '@components/Layout';
 
 const Contact = () => {
 	const [contactInfo, setContactInfo] = useState({});
@@ -18,7 +18,7 @@ const Contact = () => {
 	};
 
 	return (
-		<Layout pageName={"contact"} pageTitle="F0lio - Contact">
+		<Layout pageName={'contact'} pageTitle="F0lio - Contact">
 			<section className="relative ">
 				<Title>Contact</Title>
 				<Description>
@@ -26,11 +26,11 @@ const Contact = () => {
 					nulla.
 				</Description>
 				<form
-					className="z-0 flex flex-col w-full py-6 gap-y-4"
+					className="z-0 flex w-full flex-col gap-y-4 py-6"
 					onSubmit={(e) => handleSubmit(e)}
 				>
-					<div className="relative py-1 transition-all duration-500 rounded ">
-						<div className="absolute px-1 -mt-3 text-xs tracking-wider uppercase">
+					<div className="relative rounded py-1 transition-all duration-500 ">
+						<div className="absolute -mt-3 px-1 text-xs uppercase tracking-wider">
 							<label htmlFor="name" className="font-medium text-gray-400">
 								Full Name
 							</label>
@@ -43,12 +43,12 @@ const Contact = () => {
 								autoComplete="false"
 								tabIndex="0"
 								type="text"
-								className="block z-0 w-full h-full px-3 py-3 mt-2 bg-transparent  text-gray-300 border rounded-lg outline-none w-100 dark:bg-gray-900 dark:border-gray-800 focus:border-gray-600 border-gray-700 focus:outline-none"
+								className="w-100 z-0 mt-2 block h-full w-full rounded-lg border  border-gray-700 bg-transparent px-3 py-3 text-gray-300 outline-none focus:border-gray-600 focus:outline-none dark:border-gray-800 dark:bg-gray-900"
 							/>
 						</p>
 					</div>
-					<div className="relative py-1 transition-all duration-500 rounded">
-						<div className="absolute px-1 -mt-3 text-xs tracking-wider uppercase">
+					<div className="relative rounded py-1 transition-all duration-500">
+						<div className="absolute -mt-3 px-1 text-xs uppercase tracking-wider">
 							<p>
 								<label htmlFor="email" className="font-medium text-gray-400">
 									Email
@@ -63,12 +63,12 @@ const Contact = () => {
 								autoComplete="false"
 								tabIndex="0"
 								type="text"
-								className="block z-0 w-full h-full px-3 py-3 mt-2 bg-transparent  text-gray-300 border rounded-lg outline-none w-100 dark:bg-gray-900 dark:border-gray-800 focus:border-gray-600 border-gray-700 focus:outline-none"
+								className="w-100 z-0 mt-2 block h-full w-full rounded-lg border  border-gray-700 bg-transparent px-3 py-3 text-gray-300 outline-none focus:border-gray-600 focus:outline-none dark:border-gray-800 dark:bg-gray-900"
 							/>
 						</p>
 					</div>
-					<div className="relative py-1 transition-all duration-500 rounded ">
-						<div className="absolute px-1 -mt-3 text-xs tracking-wider uppercase">
+					<div className="relative rounded py-1 transition-all duration-500 ">
+						<div className="absolute -mt-3 px-1 text-xs uppercase tracking-wider">
 							<p>
 								<label htmlFor="message" className="font-medium text-gray-400">
 									Message
@@ -82,14 +82,14 @@ const Contact = () => {
 							id="message"
 							cols="10"
 							rows="5"
-							className="block z-0 w-full h-full px-3 py-3 mt-2 bg-transparent  text-gray-300 border rounded-lg outline-none w-100 dark:bg-gray-900 dark:border-gray-800 focus:border-gray-600 border-gray-700 focus:outline-none"
+							className="w-100 z-0 mt-2 block h-full w-full rounded-lg border  border-gray-700 bg-transparent px-3 py-3 text-gray-300 outline-none focus:border-gray-600 focus:outline-none dark:border-gray-800 dark:bg-gray-900"
 						></textarea>
 					</div>
 
 					<button
 						onSubmit={(e) => handleSubmit(e)}
 						type="submit"
-						className="right-0 px-6 py-3 font-bold text-gray-400 transition duration-300 ease-in-out border border-gray-400 rounded-lg md:w-32 hover:border-gray-200 hover:text-gray-200"
+						className="right-0 rounded-lg border border-gray-400 px-6 py-3 font-bold text-gray-400 transition duration-300 ease-in-out hover:border-gray-200 hover:text-gray-200 md:w-32"
 					>
 						Send
 					</button>
