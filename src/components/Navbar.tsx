@@ -3,18 +3,14 @@ import Link from '@components/common/Link';
 import { motion, AnimateSharedLayout } from 'framer-motion';
 import { MaxWidthWrapper } from './common/Containers';
 
+import { Popover, Transition } from '@headlessui/react';
+
 import { useWindowWidth } from '@hooks/index';
 
 import { HiMenu as OpenIcon } from 'react-icons/hi';
 import { IoCloseSharp as CloseIcon } from 'react-icons/io5';
 
 import cn from 'classnames';
-
-interface NavbarProps {
-	isOpen: boolean;
-	onClick: () => void;
-	pageName: string;
-}
 
 interface NavItemProps {
 	href: string;
@@ -42,82 +38,6 @@ const ToggleButton = ({
 	</button>
 );
 
-const SmallNavItem: React.FC<NavItemProps> = ({
-	children,
-	href,
-	isActive,
-	className,
-}) => {
-	return (
-		<li>
-			<Link href={href}>
-				<motion.div
-					drag={true}
-					dragSnapToOrigin
-					dragElastic={1}
-					dragPropagation
-					dragTransition={{ bounceStiffness: 300, bounceDamping: 15 }}
-					whileTap={{ scale: 0.9 }}
-					className={cn(
-						'rounded-2lx font-primary max-h-min cursor-pointer py-3 px-4 font-mono text-sm duration-150 hover:text-primary-3'.split(
-							' '
-						),
-
-						className,
-						isActive ? 'text-primary-3' : 'text-gray-300'
-					)}
-				>
-					{children}
-				</motion.div>
-			</Link>
-		</li>
-	);
-};
-
-const SmallNavbar: React.FC<NavbarProps> = ({ isOpen, onClick, pageName }) => {
-	return (
-		<div className="relative z-40">
-			<div className="flex justify-between px-4 pt-8">
-				<Link
-					href="/"
-					className="cursor-pointer rounded-2xl px-6 py-2 font-mono text-xl text-primary-3 hover:bg-gray-800"
-				>
-					~ F0lio
-				</Link>
-				<ToggleButton isOpen={isOpen} onClick={() => onClick()} />
-			</div>
-			{isOpen && (
-				<nav className="fixed h-full w-full ">
-					<ul className="flex h-full flex-col items-center justify-items-center bg-opacity-0 py-32 shadow-sm backdrop-blur-md backdrop-filter">
-						<SmallNavItem isActive={pageName == 'about'} href="/about">
-							/about
-						</SmallNavItem>
-						<SmallNavItem
-							isActive={pageName == 'projects'}
-							href="/projects"
-							scroll
-						>
-							/projects
-						</SmallNavItem>
-
-						<SmallNavItem isActive={pageName == 'etc'} href="/etc">
-							/etc
-						</SmallNavItem>
-						<div className="h-3 w-24 border-b border-gray-200"></div>
-						<SmallNavItem
-							className="py-5"
-							isActive={pageName == 'contact'}
-							href="/contact"
-						>
-							/contact
-						</SmallNavItem>
-					</ul>
-				</nav>
-			)}
-		</div>
-	);
-};
-
 const NavItem: React.FC<NavItemProps> = ({
 	children,
 	href,
@@ -130,74 +50,111 @@ const NavItem: React.FC<NavItemProps> = ({
 	className: string;
 }) => {
 	return (
-		<li>
-			<Link href={href} passHref>
-				<motion.div
-					drag={true}
-					dragSnapToOrigin
-					dragElastic={1}
-					dragPropagation
-					dragTransition={{ bounceStiffness: 300, bounceDamping: 15 }}
-					whileTap={{ scale: 0.9 }}
-					className={`${className} ${
-						isActive ? ' text-primary-3' : 'text-primary-1'
-					} font-primary max-h-min cursor-pointer  rounded-2xl py-3 px-4 font-mono text-sm duration-150 hover:bg-gray-800 hover:text-primary-3`}
-				>
-					{children}
-				</motion.div>
-			</Link>
-		</li>
+		<Link href={href} passHref>
+			<motion.div
+				drag
+				dragSnapToOrigin
+				dragElastic={1}
+				dragPropagation
+				dragTransition={{ bounceStiffness: 300, bounceDamping: 15 }}
+				whileTap={{ scale: 0.9 }}
+				className={cn(
+					'font-primary max-h-min cursor-pointer rounded-2xl py-3 px-4 font-mono text-sm duration-150 hover:bg-gray-800 hover:text-primary-3'.split(
+						' '
+					),
+					className,
+					isActive ? 'text-primary-3' : 'text-primary-1'
+				)}
+			>
+				{children}
+			</motion.div>
+		</Link>
 	);
 };
 
-const Navbar = ({ pageName }) => {
-	const [isOpen, setIsOpen] = useState(false);
-	const [isSmallNav, setIsSmallNav] = useState(false);
-	const windowWidth = useWindowWidth();
+const Navbar = ({ pageName }: { pageName: string }) => (
+	<>
+		<Popover className="relative flex justify-center py-6">
+			<MaxWidthWrapper>
+				<AnimateSharedLayout>
+					<nav className="flex items-center justify-between sm:justify-between">
+						<div className="flex px-3 sm:hidden">
+							<NavItem
+								isActive={pageName == 'home'}
+								href="/"
+								className="text-xl"
+							>
+								~F0lio
+							</NavItem>
+						</div>
+						<ul className="hidden items-center justify-center gap-x-6 sm:flex ">
+							<NavItem isActive={pageName == 'home'} href="/">
+								~F0lio
+							</NavItem>
+							<NavItem isActive={pageName == 'about'} href="about">
+								/about
+							</NavItem>
+							<NavItem isActive={pageName == 'projects'} href="projects">
+								/projects
+							</NavItem>
+							<NavItem isActive={pageName == 'etc'} href="etc">
+								/etc
+							</NavItem>
+						</ul>
+						<div className="hidden items-center sm:flex">
+							<NavItem isActive={pageName == 'contact'} href="contact">
+								/contact
+							</NavItem>
+						</div>
 
-	useEffect(() => {
-		if (windowWidth > 640) {
-			setIsSmallNav(false);
-			setIsOpen(false);
-		} else setIsSmallNav(true);
-	}, [windowWidth]);
-	return (
-		<>
-			{isSmallNav && (
-				<SmallNavbar
-					pageName={pageName}
-					isOpen={isOpen}
-					onClick={() => setIsOpen(!isOpen)}
-				/>
-			)}
-			<nav className="flex justify-center py-8 ">
-				<MaxWidthWrapper>
-					<AnimateSharedLayout>
-						<ul className="hidden items-center justify-between sm:flex">
-							<div className="flex items-center justify-center gap-x-6 ">
-								<NavItem isActive={pageName == 'home'} href="/">
-									~F0lio
-								</NavItem>
-								<NavItem isActive={pageName == 'about'} href="about">
-									/about
-								</NavItem>
-								<NavItem isActive={pageName == 'projects'} href="projects">
-									/projects
-								</NavItem>
-								<NavItem isActive={pageName == 'etc'} href="etc">
-									/etc
-								</NavItem>
-							</div>
+						<Popover.Button className="px-4 sm:hidden">
+							<span className="sr-only">Open main menu</span>
+							<ToggleButton isOpen={false} onClick={() => {}} />
+						</Popover.Button>
+					</nav>
+				</AnimateSharedLayout>
+			</MaxWidthWrapper>
+
+			<Transition
+				as={React.Fragment}
+				enter="duration-150 ease-out"
+				enterFrom="opacity-0 scale-95"
+				enterTo="opacity-100 scale-100"
+				leave="duration-100 ease-in"
+				leaveFrom="opacity-100 scale-100"
+				leaveTo="opacity-0 scale-95"
+			>
+				<Popover.Panel
+					focus
+					className="absolute inset-x-0 top-0 z-50 origin-top-right transform transition"
+				>
+					<div className="flex justify-end sm:hidden">
+						<Popover.Button className="absolute top-6 right-4 z-50 ">
+							<span className="sr-only">Close main menu</span>
+							<ToggleButton isOpen={true} onClick={() => {}} />
+						</Popover.Button>
+					</div>
+					<nav className="overflow-hidden rounded-lg shadow-md ring-1 ring-black ring-opacity-5">
+						<ul className="flex h-full  items-center justify-between bg-opacity-0 px-10 py-28 shadow-sm backdrop-blur-md backdrop-filter">
+							<NavItem isActive={pageName == 'about'} href="about">
+								/about
+							</NavItem>
+							<NavItem isActive={pageName == 'projects'} href="projects">
+								/projects
+							</NavItem>
+							<NavItem isActive={pageName == 'etc'} href="etc">
+								/etc
+							</NavItem>
 
 							<NavItem isActive={pageName == 'contact'} href="contact">
 								/contact
 							</NavItem>
 						</ul>
-					</AnimateSharedLayout>
-				</MaxWidthWrapper>
-			</nav>
-		</>
-	);
-};
+					</nav>
+				</Popover.Panel>
+			</Transition>
+		</Popover>
+	</>
+);
 
 export default Navbar;

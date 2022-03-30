@@ -23,14 +23,14 @@ const Layout = (props) => {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<div className="relative h-screen w-full flex-col justify-center bg-primary">
+			<div className="relative min-h-screen w-full flex-col justify-center bg-primary">
 				<Navbar pageName={props.pageName} />
 				<motion.main
 					variants={variants}
 					initial="hidden"
 					animate="enter"
 					exit="exit"
-					className="flex w-full flex-col items-center justify-center px-8 pt-16"
+					className="flex w-full flex-col items-center justify-center px-8 py-16"
 				>
 					<MaxWidthWrapper>{props.children}</MaxWidthWrapper>
 				</motion.main>
