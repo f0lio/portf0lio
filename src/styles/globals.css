@@ -13,3 +13,13 @@
 		scrollbar-width: none; /* Firefox */
 	}
 }
+
+@layer components {
+	
+	.form-input {
+	  @apply   h-full w-full rounded-lg border border-gray-500 bg-transparent px-3 py-3 text-gray-300 outline-none focus:border-primary-3 focus:border-opacity-70 focus:outline-none ;
+	}
+	
+  }
+  
+

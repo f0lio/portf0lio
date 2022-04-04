@@ -5,8 +5,7 @@
   ],
   "extends": [
     "next/core-web-vitals",
-    "plugin:prettier/recommended",
-    "plugin:tailwind/recommended"
+    "plugin:prettier/recommended"
   ],
   "rules": {
     "no-console": [

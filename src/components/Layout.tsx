@@ -16,14 +16,17 @@ const Layout = (props) => {
 		<>
 			<Head>
 				<title>{props.pageTitle}</title>
-				<meta name="description" content={props.description || 'portfolio'} />
+				<meta
+					name="description"
+					content={props.description || 'omar magoury f0lio'}
+				/>
 				<meta
 					name="keywords"
 					content={props.keywords || 'portfolio, developer, resume'}
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<div className="relative min-h-screen w-full flex-col justify-center bg-primary">
+			<div className="relative min-h-screen w-full flex-col justify-center bg-black">
 				<Navbar pageName={props.pageName} />
 				<motion.main
 					variants={variants}
