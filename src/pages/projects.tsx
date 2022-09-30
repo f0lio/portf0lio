@@ -1,78 +1,76 @@
-import { Description, SubTitle, Title } from '@components/common/Text';
-import Layout from '@components/Layout';
+import Image from "next/image";
+import { FiExternalLink } from "react-icons/fi";
 
-import Image from 'next/image';
-import { projects } from '@data/index';
+import { Description, Title } from "@components/common/Text";
+import Layout from "@components/Layout";
+import { projects } from "@data/index";
 
 interface ProjectCardProps {
-	name: string;
-	description: string;
-	image: string;
-	alt?: string;
-	link?: string;
-	github?: string;
+  name: string;
+  description: string;
+  image: string;
+  alt?: string;
+  link?: string;
+  github?: string;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({
-	name,
-	description,
-	image,
-	alt,
-	link,
-	github,
+  name,
+  description,
+  image,
+  alt,
+  link,
+  github,
 }) => (
-	<li className="max-w-min">
-		<figure className="group flex cursor-pointer flex-col space-y-2 rounded-md text-left align-top no-underline outline-none focus:outline-none focus:ring focus:ring-offset-4 dark:focus:ring-offset-gray-900">
-			<a
-				href={link || github}
-				target="_blank"
-				className="image-span-block w-full overflow-hidden rounded-md"
-			>
-				{image && (
-					<Image
-						src={image}
-						alt={alt || name}
-						width={160}
-						height={160}
-						className="rounded-md brightness-90 transition-all duration-300 group-hover:scale-125 group-hover:rounded-md group-hover:brightness-100"
-					/>
-				)}
-			</a>
-		</figure>
-		<article className="w-40 p-2 ">
-			<a
-				href={link || github}
-				target="_blank"
-				className="py-2 text-lg font-bold text-gray-300"
-			>
-				{name}
-			</a>
-			<p className="py-3 text-sm text-gray-300">{description}</p>
-		</article>
-	</li>
+  <li className="group relative mx-0 h-40 rounded-lg border border-primary-3/10 py-2 px-5 duration-200 hover:border-primary-3/40">
+    <figure className="group flex cursor-pointer flex-col space-y-2 rounded-md text-left align-top no-underline outline-none focus:outline-none focus:ring focus:ring-offset-4 dark:focus:ring-offset-gray-900">
+      <a
+        href={link || github}
+        target="_blank"
+        className=" w-full overflow-hidden rounded-md"
+        rel="noreferrer"
+      >
+        {image && (
+          <Image
+            src={image}
+            alt={alt || name}
+            width={400}
+            height={400}
+            layout="responsive"
+            className="rounded-md brightness-90 transition-all duration-300 group-hover:scale-110 group-hover:rounded-md group-hover:brightness-100"
+          />
+        )}
+      </a>
+    </figure>
+    <article className="flex cursor-pointer flex-col gap-y-2 py-4">
+      <p className="text-xl font-bold text-gray-200 ">{name}</p>
+      <p className="py-1 text-sm text-gray-400">{description}</p>
+      <a
+        href={link || github}
+        target="_blank"
+        className="absolute bottom-3 right-4 text-primary-3/20 duration-200 hover:scale-90 group-hover:text-primary-3/60"
+        rel="noreferrer"
+      >
+        <FiExternalLink className="h-6 w-6" />
+      </a>
+    </article>
+  </li>
 );
 
-const Projects = ({ data }) => {
-	return (
-		<Layout pageName={'projects'} pageTitle="F0lio - Projects">
-			<Title>Projects</Title>
-			<Description>
-				Quis nulla sit excepteur laboris consectetur cupidatat sint fugiat
-				veniam consequat.
-				<p>Commodo sit commodo nisi magna duis do cillum veniam adipisicing.</p>
-			</Description>
-
-			<section className="py-6">
-				<SubTitle>Lorem - ipusm</SubTitle>
-
-				<ul className="grid max-w-full grid-cols-2 gap-y-6 gap-x-4 py-6  md:grid-cols-3">
-					{projects?.map((project, index) => (
-						<ProjectCard key={index} {...project} />
-					))}
-				</ul>
-			</section>
-		</Layout>
-	);
+const Projects = () => {
+  return (
+    <Layout pageName={"projects"} pageTitle="F0lio - Projects">
+      <Title>Projects</Title>
+      <Description>Some projects I&apos;ve worked on.</Description>
+      <section className="pt-6">
+        <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+          {projects?.map((project, index) => (
+            <ProjectCard key={index} {...project} image={null} />
+          ))}
+        </ul>
+      </section>
+    </Layout>
+  );
 };
 
 export default Projects;
