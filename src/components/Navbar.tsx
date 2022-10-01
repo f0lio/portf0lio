@@ -3,7 +3,8 @@ import React from "react";
 import { Popover, Transition } from "@headlessui/react";
 import cn from "classnames";
 import { motion, AnimateSharedLayout } from "framer-motion";
-import { HiMenu as OpenIcon } from "react-icons/hi";
+import { FaTwitter, FaGithub, FaLinkedin } from "react-icons/fa";
+import { HiMail, HiMenu as OpenIcon } from "react-icons/hi";
 import { IoCloseSharp as CloseIcon } from "react-icons/io5";
 
 import Link from "@components/common/Link";
@@ -71,86 +72,132 @@ const NavItem: React.FC<NavItemProps> = ({
   );
 };
 
-const Navbar = ({ pageName }: { pageName: string }) => (
-  <>
-    <Popover className="relative flex justify-center py-8">
-      <MaxWidthWrapper>
-        <AnimateSharedLayout>
-          <nav className="flex items-center justify-between sm:justify-between">
-            <div className="flex px-3 sm:hidden">
-              <NavItem
-                isActive={pageName == "home"}
-                href="/"
-                className="text-xl"
-              >
-                ~F0lio
-              </NavItem>
-            </div>
-            <ul className="hidden items-center justify-center gap-x-6 sm:flex ">
-              <NavItem isActive={pageName == "home"} href="/">
-                ~F0lio
-              </NavItem>
-              <NavItem isActive={pageName == "projects"} href="projects">
-                /projects
-              </NavItem>
-              <NavItem isActive={pageName == "etc"} href="etc">
-                /etc
-              </NavItem>
-            </ul>
-            <div className="hidden items-center sm:flex">
-              <NavItem isActive={pageName == "contact"} href="contact">
-                /contact
-              </NavItem>
-            </div>
+const Navbar = ({
+  pageName,
+  isOpen,
+  setIsOpen,
+}: {
+  pageName: string;
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}) => {
+  return (
+    <>
+      <Popover className="relative flex justify-center py-8">
+        <MaxWidthWrapper>
+          <AnimateSharedLayout>
+            <nav className="flex items-center justify-between sm:justify-between">
+              <div className="flex px-3 sm:hidden">
+                <NavItem isActive={true} href="/" className="text-2xl">
+                  ~F0lio
+                </NavItem>
+              </div>
+              <ul className="hidden items-center justify-center gap-x-6 sm:flex">
+                <NavItem isActive={pageName == "home"} href="/">
+                  ~F0lio
+                </NavItem>
+                <NavItem isActive={pageName == "projects"} href="projects">
+                  /projects
+                </NavItem>
+                <NavItem isActive={pageName == "etc"} href="etc">
+                  /etc
+                </NavItem>
+              </ul>
+              <div className="hidden items-center sm:flex">
+                <NavItem isActive={pageName == "contact"} href="contact">
+                  /contact
+                </NavItem>
+              </div>
+              {!isOpen && (
+                <Popover.Button className="px-4 sm:hidden">
+                  <span className="sr-only">Open main menu</span>
+                  <ToggleButton
+                    isOpen={false}
+                    onClick={() => setIsOpen(true)}
+                  />
+                </Popover.Button>
+              )}
+            </nav>
+          </AnimateSharedLayout>
+        </MaxWidthWrapper>
 
-            <Popover.Button className="px-4 sm:hidden">
-              <span className="sr-only">Open main menu</span>
-              <ToggleButton isOpen={false} onClick={() => {}} />
-            </Popover.Button>
-          </nav>
-        </AnimateSharedLayout>
-      </MaxWidthWrapper>
-
-      <Transition
-        as={React.Fragment}
-        enter="duration-150 ease-out"
-        enterFrom="opacity-0 scale-95"
-        enterTo="opacity-100 scale-100"
-        leave="duration-100 ease-in"
-        leaveFrom="opacity-100 scale-100"
-        leaveTo="opacity-0 scale-95"
-      >
-        <Popover.Panel
-          focus
-          className="absolute inset-x-0 top-0 z-50 origin-top-right transition"
+        <Transition
+          as={React.Fragment}
+          enter="duration-150 ease-out"
+          enterFrom="opacity-0 scale-95"
+          enterTo="opacity-100 scale-100"
+          leave="duration-100 ease-in"
+          leaveFrom="opacity-100 scale-100"
+          leaveTo="opacity-0 scale-95"
         >
-          <div className="flex justify-end sm:hidden">
-            <Popover.Button className="absolute top-6 right-4 z-50 ">
-              <span className="sr-only">Close main menu</span>
-              <ToggleButton isOpen={true} onClick={() => {}} />
-            </Popover.Button>
-          </div>
-          <nav className="overflow-hidden rounded-lg shadow-md ring-1 ring-black/5">
-            <ul className="flex h-full items-center justify-between px-10 py-28 shadow-sm backdrop-blur-md">
-              <NavItem isActive={pageName == "about"} href="about">
-                /about
-              </NavItem>
-              <NavItem isActive={pageName == "projects"} href="projects">
-                /projects
-              </NavItem>
-              <NavItem isActive={pageName == "etc"} href="etc">
-                /etc
-              </NavItem>
+          <Popover.Panel
+            focus
+            className="absolute inset-x-0 top-0 z-50 origin-top-right transition"
+          >
+            <div className="flex justify-end sm:hidden">
+              <Popover.Button className="absolute top-10 right-4 z-50 ">
+                <span className="sr-only">Close main menu</span>
+                <ToggleButton isOpen={true} onClick={() => setIsOpen(false)} />
+              </Popover.Button>
+            </div>
+            <nav className="flex h-screen flex-col overflow-hidden rounded-lg py-8 shadow-md ring-1 ring-black/5 backdrop-blur-xl">
+              <ul className="flex h-full flex-col items-start gap-y-6 px-10 py-28 shadow-lg backdrop-blur-md">
+                <NavItem isActive={pageName == "projects"} href="projects">
+                  /projects
+                </NavItem>
+                <NavItem isActive={pageName == "etc"} href="etc">
+                  /etc
+                </NavItem>
 
-              <NavItem isActive={pageName == "contact"} href="contact">
-                /contact
-              </NavItem>
-            </ul>
-          </nav>
-        </Popover.Panel>
-      </Transition>
-    </Popover>
-  </>
-);
+                <NavItem isActive={pageName == "contact"} href="contact">
+                  /contact
+                </NavItem>
+              </ul>
+              <div className="flex w-full flex-col justify-center gap-5 px-8 pt-8 text-secondary">
+                <div className="border-t border-gray-700" />
+                <a
+                  href="https://www.twitte.com/f0lio"
+                  target={"_blank"}
+                  className="flex min-w-min items-center gap-x-3 hover:text-primary-3 md:px-10"
+                  rel="noreferrer"
+                >
+                  <FaTwitter />
+                  <p>F0lio</p>
+                </a>
+                <a
+                  href="https://www.github.com/f0lio"
+                  target={"_blank"}
+                  className="flex min-w-min items-center gap-x-3 hover:text-primary-3 md:px-10 "
+                  rel="noreferrer"
+                >
+                  <FaGithub />
+                  <p>F0lio</p>
+                </a>
 
+                <a
+                  href="https://www.linkedin.com/in/omar-magoury"
+                  target={"_blank"}
+                  className="flex min-w-fit items-center gap-x-3 hover:text-primary-3 md:px-10 "
+                  rel="noreferrer"
+                >
+                  <FaLinkedin />
+                  <p>Omar Magoury</p>
+                </a>
+                <a
+                  href="mailto:contact@f0lio.me"
+                  target={"_blank"}
+                  className="flex min-w-min items-center gap-x-3 hover:text-primary-3 md:px-10"
+                  rel="noreferrer"
+                >
+                  <HiMail />
+                  <p>contact@f0lio.me</p>
+                </a>
+              </div>
+            </nav>
+          </Popover.Panel>
+        </Transition>
+      </Popover>
+    </>
+  );
+};
 export default Navbar;

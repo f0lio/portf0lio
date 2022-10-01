@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 
+import classNames from "classnames";
 import { motion } from "framer-motion";
 import Head from "next/head";
 
@@ -14,6 +15,7 @@ const variants = {
 };
 
 const Layout = (props) => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <Head>
@@ -28,8 +30,19 @@ const Layout = (props) => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="relative min-h-screen w-full flex-col justify-center bg-black">
-        <Navbar pageName={props.pageName} />
+      <div
+        className={classNames(
+          "relative min-h-screen w-full flex-col justify-center bg-black",
+          {
+            "h-screen overflow-hidden": isOpen,
+          }
+        )}
+      >
+        <Navbar
+          pageName={props.pageName}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+        />
         <motion.main
           variants={variants}
           initial="hidden"
