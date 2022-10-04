@@ -116,7 +116,7 @@ const Contact = () => {
 								md:flex-col md:justify-start md:px-0"
           >
             <a
-              href="https://www.twitte.com/f0lio"
+              href="https://www.twitter.com/f0lio"
               target={"_blank"}
               className="flex min-w-min items-center gap-x-3 hover:text-primary-3 md:px-10"
               rel="noreferrer"

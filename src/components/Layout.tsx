@@ -10,7 +10,7 @@ import Navbar from "./Navbar";
 
 const variants = {
   hidden: { opacity: 0 },
-  enter: { opacity: 1 },
+  enter: { opacity: 1, transition: { delay: 0.2 } },
   exit: { opacity: 0 },
 };
 
@@ -18,6 +18,9 @@ const Layout = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
+      {/* <Toaster
+        toastOptions={{ position: "top-left", style: { color: "#f00" } }}
+      /> */}
       <Head>
         <title>{props.pageTitle}</title>
         <meta
@@ -56,4 +59,5 @@ const Layout = (props) => {
     </>
   );
 };
+
 export default Layout;

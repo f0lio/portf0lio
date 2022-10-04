@@ -50,7 +50,7 @@ export const Description = ({
 }) => (
   <p
     className={cn(
-      "break-words py-2 text-base font-light text-secondary selection:text-primary-2".split(
+      "break-words py-2 text-base font-light text-primary-1/80 selection:text-primary-2".split(
         " "
       ),
       className

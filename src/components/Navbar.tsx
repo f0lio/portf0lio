@@ -156,7 +156,7 @@ const Navbar = ({
               <div className="flex w-full flex-col justify-center gap-5 px-8 pt-8 text-secondary">
                 <div className="border-t border-gray-700" />
                 <a
-                  href="https://www.twitte.com/f0lio"
+                  href="https://www.twitter.com/f0lio"
                   target={"_blank"}
                   className="flex min-w-min items-center gap-x-3 hover:text-primary-3 md:px-10"
                   rel="noreferrer"
