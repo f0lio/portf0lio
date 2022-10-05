@@ -32,6 +32,11 @@ const Layout = (props) => {
           content={props.keywords || "portfolio, developer, resume"}
         />
         <link rel="icon" href="/favicon.ico" />
+        <script
+          defer
+          data-domain="portf0lio.vercel.app"
+          src="https://plausible.io/js/plausible.js"
+        />
       </Head>
       <div
         className={classNames(
