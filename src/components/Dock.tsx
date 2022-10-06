@@ -1,6 +1,6 @@
 import React from "react";
 
-import Link from "@components/common/Link";
+import Link from "@components/common/Links";
 // import Draggable from "react-draggable";
 
 const DockItem = ({ children, href }) => {

@@ -59,3 +59,23 @@ export const Description = ({
     {children}
   </p>
 );
+
+export const Bullet = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
+  <div
+    className={cn(
+      "flex break-words py-2 text-base font-light text-primary-1/80 selection:text-primary-2".split(
+        " "
+      ),
+      className
+    )}
+  >
+    <span className="mr-2">{"\u2022"}</span>
+    {children}
+  </div>
+);

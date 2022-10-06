@@ -3,23 +3,22 @@
 @tailwind utilities;
 
 @layer utilities {
+
 	/* Chrome, Safari and Opera */
 	.no-scrollbar::-webkit-scrollbar {
 		display: none;
 	}
 
 	.no-scrollbar {
-		-ms-overflow-style: none; /* IE and Edge */
-		scrollbar-width: none; /* Firefox */
+		-ms-overflow-style: none;
+		/* IE and Edge */
+		scrollbar-width: none;
+		/* Firefox */
 	}
 }
 
 @layer components {
-	
 	.form-input {
-	  @apply   h-full w-full rounded-lg border border-gray-500 bg-transparent px-3 py-3 text-gray-300 outline-none focus:border-primary-3 focus:border-opacity-70 focus:outline-none ;
+		@apply h-full w-full rounded-lg border border-gray-500 bg-transparent px-3 py-3 text-gray-300 outline-none focus:border-primary focus:border-primary/70 focus:outline-none;
 	}
-	
-  }
-  
-
+}

@@ -22,8 +22,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   link,
   github,
 }) => (
-  <li className="group relative mx-0 h-40 rounded-lg border border-primary-3/30 py-2 px-5 duration-200 hover:border-primary-3/40">
-    <figure className="group flex cursor-pointer flex-col space-y-2 rounded-md text-left align-top no-underline outline-none focus:outline-none focus:ring focus:ring-offset-4 dark:focus:ring-offset-gray-900">
+  <li className="group relative mx-0 h-40 rounded-lg border border-primary/30 py-2 px-5 duration-200 hover:border-primary/40">
+    <figure className="group flex flex-col space-y-2 rounded-md text-left align-top no-underline outline-none focus:outline-none focus:ring focus:ring-offset-4 dark:focus:ring-offset-gray-900 md:cursor-pointer">
       <a
         href={link || github}
         target="_blank"
@@ -42,8 +42,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         )}
       </a>
     </figure>
-    <article className="flex cursor-pointer flex-col gap-y-2 py-4">
-      <p className="text-xl font-bold text-gray-200 duration-200 selection:text-primary-3 group-hover:text-primary-3">
+    <article className="flex flex-col gap-y-2 py-4 md:cursor-pointer">
+      <p className="text-xl font-bold text-gray-200 duration-200 selection:text-primary group-hover:text-primary">
         {name}
       </p>
 
@@ -52,7 +52,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
       <a
         href={link || github}
         target="_blank"
-        className="absolute bottom-3 right-4 text-primary-3/40 duration-200 hover:scale-90 group-hover:text-primary-3/70"
+        className="absolute bottom-3 right-4 text-primary/40 duration-200 hover:scale-90 group-hover:text-primary/70"
         rel="noreferrer"
       >
         <FiExternalLink className="h-6 w-6" />

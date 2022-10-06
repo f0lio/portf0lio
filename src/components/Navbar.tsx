@@ -4,10 +4,10 @@ import { Popover, Transition } from "@headlessui/react";
 import cn from "classnames";
 import { motion, AnimateSharedLayout } from "framer-motion";
 import { FaTwitter, FaGithub, FaLinkedin } from "react-icons/fa";
-import { HiMail, HiMenu as OpenIcon } from "react-icons/hi";
+import { HiMenu as OpenIcon } from "react-icons/hi";
 import { IoCloseSharp as CloseIcon } from "react-icons/io5";
 
-import Link from "@components/common/Link";
+import Link, { SocialLink } from "@components/common/Links";
 
 import { MaxWidthWrapper } from "./common/Containers";
 
@@ -26,7 +26,7 @@ const ToggleButton = ({
   onClick: () => void;
 }) => (
   <button
-    className="h-11 py-2 text-white outline-none hover:text-primary-3"
+    className="h-11 py-2 text-white outline-none hover:text-primary"
     onClick={() => onClick()}
   >
     {isOpen ? (
@@ -58,9 +58,10 @@ const NavItem: React.FC<NavItemProps> = ({
         dragTransition={{ bounceStiffness: 300, bounceDamping: 15 }}
         whileTap={{ scale: 0.9 }}
         className={cn(
-          "font-primary max-h-min cursor-pointer rounded-2xl py-3 px-4 font-mono text-sm underline duration-150 hover:bg-gray-900 hover:text-primary-3",
+          `font-primary max-h-min rounded-2xl py-3 px-4 font-mono text-sm underline 
+           duration-150 hover:bg-gray-900 hover:text-primary md:cursor-pointer`,
           {
-            " text-primary-3": isActive,
+            " text-primary/90": isActive,
             "text-primary-1": !isActive,
           },
           className
@@ -132,9 +133,9 @@ const Navbar = ({
         >
           <Popover.Panel
             focus
-            className="absolute inset-x-0 top-0 z-50 origin-top-right transition"
+            className="absolute inset-x-0 top-0 z-50 origin-top-right transition md:hidden"
           >
-            <div className="flex justify-end sm:hidden">
+            <div className="flex justify-end">
               <Popover.Button className="absolute top-10 right-4 z-50 ">
                 <span className="sr-only">Close main menu</span>
                 <ToggleButton isOpen={true} onClick={() => setIsOpen(false)} />
@@ -155,43 +156,21 @@ const Navbar = ({
               </ul>
               <div className="flex w-full flex-col justify-center gap-5 px-8 pt-8 text-secondary">
                 <div className="border-t border-gray-700" />
-                <a
+                <SocialLink
+                  label="F0lio"
                   href="https://www.twitter.com/f0lio"
-                  target={"_blank"}
-                  className="flex min-w-min items-center gap-x-3 hover:text-primary-3 md:px-10"
-                  rel="noreferrer"
-                >
-                  <FaTwitter />
-                  <p>F0lio</p>
-                </a>
-                <a
+                  icon={FaTwitter}
+                />
+                <SocialLink
+                  label="F0lio"
                   href="https://www.github.com/f0lio"
-                  target={"_blank"}
-                  className="flex min-w-min items-center gap-x-3 hover:text-primary-3 md:px-10 "
-                  rel="noreferrer"
-                >
-                  <FaGithub />
-                  <p>F0lio</p>
-                </a>
-
-                <a
+                  icon={FaGithub}
+                />
+                <SocialLink
+                  label="Omar Magoury"
                   href="https://www.linkedin.com/in/omar-magoury"
-                  target={"_blank"}
-                  className="flex min-w-fit items-center gap-x-3 hover:text-primary-3 md:px-10 "
-                  rel="noreferrer"
-                >
-                  <FaLinkedin />
-                  <p>Omar Magoury</p>
-                </a>
-                <a
-                  href="mailto:contact@f0lio.me"
-                  target={"_blank"}
-                  className="flex min-w-min items-center gap-x-3 hover:text-primary-3 md:px-10"
-                  rel="noreferrer"
-                >
-                  <HiMail />
-                  <p>contact@f0lio.me</p>
-                </a>
+                  icon={FaLinkedin}
+                />
               </div>
             </nav>
           </Popover.Panel>

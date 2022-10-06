@@ -6,6 +6,7 @@ import Head from "next/head";
 
 import { MaxWidthWrapper } from "@components/common/Containers";
 
+import Footer from "./Footer";
 import Navbar from "./Navbar";
 
 const variants = {
@@ -25,7 +26,7 @@ const Layout = (props) => {
         <title>{props.pageTitle}</title>
         <meta
           name="description"
-          content={props.description || "omar magoury f0lio"}
+          content={props.description || "Omar Magoury website"}
         />
         <meta
           name="keywords"
@@ -60,6 +61,7 @@ const Layout = (props) => {
         >
           <MaxWidthWrapper>{props.children}</MaxWidthWrapper>
         </motion.main>
+        <Footer />
       </div>
     </>
   );

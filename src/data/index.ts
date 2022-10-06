@@ -47,11 +47,11 @@ export const techs = [
     icon: SiPython,
   },
   {
-    name: "C Programming",
+    name: "Holy C",
     icon: SiC,
   },
   {
-    name: "C++ OOP",
+    name: "C++",
     icon: SiCplusplus,
   },
   {
@@ -68,7 +68,7 @@ export const techs = [
     icon: SiMongodb,
   },
   {
-    name: "Postgres",
+    name: "PostgreSQL",
     icon: SiPostgresql,
   },
   {
@@ -76,16 +76,25 @@ export const techs = [
     icon: SiMysql,
   },
   {
-    name: "styled-components",
-    icon: SiStyledcomponents,
-  },
-  {
     name: "TailwindCSS",
     icon: SiTailwindcss,
+  },
+  {
+    name: "styled-components",
+    icon: SiStyledcomponents,
   },
 ];
 
 export const projects = [
+  {
+    name: "HuMaps",
+    description: "Discover people through maps.",
+    link: "https://humaps.vercel.app/",
+    github: "https://github.com/f0lio/humaps",
+    // image: "/humaps.png",
+    tags: ["React", "NextJS", "Mapbox", "Redis", "Maps"],
+    techs: ["Nextjs", "Typescript", "Mapbox", "Redis"],
+  },
   {
     name: "HiLight",
     description:
